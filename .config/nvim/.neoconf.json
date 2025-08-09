@@ -1,1 +1,15 @@
-../../dotfiles/.config/nvim-lazy/.neoconf.json
+{
+  "neodev": {
+    "library": {
+      "enabled": true,
+      "plugins": true
+    }
+  },
+  "neoconf": {
+    "plugins": {
+      "lua_ls": {
+        "enabled": true
+      }
+    }
+  }
+}

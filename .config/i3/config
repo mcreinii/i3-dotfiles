@@ -84,8 +84,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 #       APPLICATION LAUNCHERS
 ############################
 bindsym $mod+Return exec kitty
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-bindsym $mod+Shift+d exec --no-startup-id rofi -show drun -prompt "Launch > "
+bindsym $mod+d exec --no-startup-id rofi -modi drun -show drun -display-drun "  Launch"
 bindsym $mod+Shift+q kill
 
 ############################

@@ -1,12 +1,27 @@
 ############################
 #       VARIABLES
 ############################
-exec --no-startup-id xrdb -merge ~/.Xresources-colors
-
-set_from_resource $primary color.primary 
-set_from_resource $secondary color.secondary
-set_from_resource $bg color.bg 
-set_from_resource $fg color.fg
+exec_always --no-startup-id xrdb -merge ~/.Xresources
+#
+# Load colors from Xresources
+set_from_resource $foreground  color.foreground  #ffffff
+set_from_resource $background  color.background  #000000
+set_from_resource $black        color0           #000000
+set_from_resource $red          color1           #ff0000
+set_from_resource $green        color2           #00ff00
+set_from_resource $yellow       color3           #ffff00
+set_from_resource $blue         color4           #0000ff
+set_from_resource $magenta      color5           #ff00ff
+set_from_resource $cyan         color6           #00ffff
+set_from_resource $white        color7           #c0c0c0
+set_from_resource $bright_black color8           #808080
+set_from_resource $bright_red   color9           #ff0000
+set_from_resource $bright_green color10          #00ff00
+set_from_resource $bright_yellow color11         #ffff00
+set_from_resource $bright_blue  color12          #0000ff
+set_from_resource $bright_magenta color13        #ff00ff
+set_from_resource $bright_cyan  color14          #00ffff
+set_from_resource $bright_white color15          #ffffff
 
 set $mod Mod1
 set $left h
@@ -39,7 +54,13 @@ tiling_drag modifier titlebar
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
+exec --no-startup-id dunst
 exec_always --no-startup-id picom
+
+############################
+#       XRDB MERGE
+############################
+bindsym $mod+Shift+m exec --no-startup-id xrdb -merge ~/.Xresources-colors && i3-msg reload && notify-send "Reloaded colors (merged xrdb)"
 
 ############################
 #       AUDIO CONTROLS
@@ -55,6 +76,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 ############################
 bindsym $mod+Return exec kitty
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+Shift+d exec --no-startup-id rofi -show drun
 bindsym $mod+Shift+q kill
 
 ############################
@@ -147,16 +169,15 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?.' -B 'Yes' 'i3-msg 
 # Appearance
 ###############################################################################
 
-set_from_resource $primary color.primary #ff00ff
-set_from_resource $secondary color.secondary #00ffff
-set_from_resource $bg color.bg #1e1e2e
-set_from_resource $fg color.fg #cdd6f4
-
-client.focused          $primary $bg $fg $primary
-client.focused_inactive $secondary $bg $fg $secondary
+# Apply to i3 borders
+client.focused          $blue          $blue        $background   $blue         $blue
+client.focused_inactive $bright_black  $bright_black $foreground   $bright_black $bright_black
+client.unfocused        $black         $black        $white        $black        $black
+client.urgent           $red           $red          $background   $red          $red
+client.placeholder      $black         $black        $foreground   $black        $black
 
 # Hide title bars for tiling windows, keep them for floating windows
-default_border pixel 4
+default_border pixel 2
 default_floating_border normal
 
 ############################

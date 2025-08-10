@@ -1,4 +1,8 @@
 # Lines configured by zsh-newuser-install
+if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
+    eval $(dbus-launch --sh-syntax)
+fi
+
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000

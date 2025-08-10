@@ -1,0 +1,17 @@
+configuration {
+    modi: "drun,run";
+    font: "JetBrainsMono Nerd Font 12";
+    show-icons: true;
+    icon-theme: "Papirus";
+}
+
+* {
+    foreground:  @foreground;
+    background:  @background;
+    selected:    @color4;
+    urgent:      @color1;
+    highlight:   @color3;
+}
+
+@import "~/.Xresources"
+

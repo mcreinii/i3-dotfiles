@@ -6,7 +6,7 @@ WALLPAPER_DIR="${HOME}/Pictures/Wallpapers"
 DMENU_CMD="${DMENU:-dmenu -i -l 20 -p Wallpaper}"
 FEH_CMD="${FEH:-feh --bg-scale}"
 NOTIFY_CMD="${NOTIFY:-notify-send}"
-PREVIEW_CMD="${PREVIEW:-sxiv -t}"   # thumbnail mode
+PREVIEW_CMD="${PREVIEW:-sxiv -t}" # thumbnail mode
 CACHE_FILE="${HOME}/.cache/current_wallpaper"
 
 # Find images
@@ -28,7 +28,7 @@ done
 
 # Show menu
 choice=$(printf '%s\n' "${menu_list[@]}" | $DMENU_CMD)
-[ -z "$choice" ] && exit 0  # cancel
+[ -z "$choice" ] && exit 0 # cancel
 
 # Handle random
 if [[ "$choice" == "🎲 Random" ]]; then
@@ -50,10 +50,10 @@ fi
 
 # Apply wallpaper
 $FEH_CMD -- "$choice_file"
+wal -i "$choice_file"
 
 # Save last wallpaper
-echo "$choice_file" > "$CACHE_FILE"
+echo "$choice_file" >"$CACHE_FILE"
 
 # Notify
 $NOTIFY_CMD "Wallpaper" "$(basename "$choice_file") set"
-

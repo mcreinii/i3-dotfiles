@@ -1,7 +1,7 @@
 ############################
 #       VARIABLES
 ############################
-exec_always --no-startup-id xrdb -merge ~/.Xresources
+exec_always --no-startup-id xrdb -merge ~/.cache/wal/colors.Xresources
 
 exec_always --no-startup-id ~/.local/bin/update-rofi-colors
 #
@@ -60,6 +60,7 @@ exec --no-startup-id dunst
 exec_always --no-startup-id picom
 # Restore last wallpaper on startup
 exec_always --no-startup-id bash -c 'test -f ~/.cache/current_wallpaper && feh --bg-scale "$(cat ~/.cache/current_wallpaper)"'
+exec_always --no-startup-id wal -i "$(cat ~/.cache/current_wallpaper)"
 
 ############################
 #       MISC KEYBINDS
@@ -111,6 +112,8 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+focus_follows_mouse no
+
 ############################
 #       WINDOW LAYOUTS
 ############################
@@ -128,7 +131,7 @@ bindsym $mod+a focus parent
 #        WINDOW GAPS
 ############################
 # Inner gaps: space between windows
-gaps inner 8
+gaps inner 0
 
 # Optional: change gaps on the fly with keybinds
 bindsym $mod+Shift+comma gaps inner current plus 4
@@ -177,15 +180,14 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?.' -B 'Yes' 'i3-msg 
 # Appearance
 ###############################################################################
 
-# Apply to i3 borders
-client.focused          $blue          $blue        $background   $blue         $blue
-client.focused_inactive $bright_black  $bright_black $foreground   $bright_black $bright_black
-client.unfocused        $black         $black        $white        $black        $black
-client.urgent           $red           $red          $background   $red          $red
-client.placeholder      $black         $black        $foreground   $black        $black
+client.focused          $color2  $color2    $color15 $color2   $color2
+client.focused_inactive $color0  $color0    $color7  $color0   $color0
+client.unfocused        $color0  $color0    $color7  $color0   $color0
+client.urgent           $color1  $color1    $color15 $color1   $color1
+client.placeholder      $color0  $color0    $color15 $color0   $color0
 
 # Hide title bars for tiling windows, keep them for floating windows
-default_border pixel 2
+default_border pixel 4
 default_floating_border normal
 
 ############################
@@ -215,21 +217,21 @@ bar {
     i3bar_command i3bar --transparency
     status_command i3blocks
 
-    padding 4px 16px 4px 16px
+    padding 2px 8px 2px 8px
 
     position top
 
     font pango:FiraMono Mono Nerd Font SemiBold 10
     colors {
         background #00000000
-        statusline $color10
-        separator $color1
+        statusline $color15
+        separator  $color8
 
-        focused_workspace  #00000000 $color12 $background
-        active_workspace   #333333 #5f676a #ffffff
-        inactive_workspace #333333 #222222 #888888
-        urgent_workspace   #2f343a #900000 #ffffff
-        binding_mode       #2f343a #900000 #ffffff
+        focused_workspace  $color2  $color2  $color15
+        active_workspace   $color0  $color0  $color15
+        inactive_workspace $color0  $color0  $color7
+        urgent_workspace   $color1  $color1  $color15
+        binding_mode       $color3  $color3  $color0
       }
 }
 

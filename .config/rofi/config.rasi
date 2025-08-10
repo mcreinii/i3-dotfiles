@@ -1,17 +1,55 @@
+@import "xresources";
 configuration {
     modi: "drun,run";
-    font: "JetBrainsMono Nerd Font 12";
+    font: "FiraMono Mono Nerd Font 12";
     show-icons: true;
-    icon-theme: "Papirus";
+    fullscreen: true;
+    transparency: "real"; /* Needs compositor */
 }
 
 * {
-    foreground:  @foreground;
-    background:  @background;
-    selected:    @color4;
-    urgent:      @color1;
-    highlight:   @color3;
+    // background: rgba(0, 0, 0, 0); /* Fully transparent by default */
+    foreground: #ffffff;
+    border: 0;
 }
 
-@import "~/.Xresources"
+window {
+    background: rgba(255, 0 , 0); /* 40% opaque black for blur */
+    padding: 20%;
+    width: 100%;
+}
 
+listview {
+    background: rgba(0, 0, 0, 0);
+    alternate: false; /* Disable alternating logic */
+}
+
+mainbox,
+inputbar,
+element,
+element.selected,
+element.active,
+element.urgent,
+textbox {
+    background: rgba(0, 0, 0, 0); /* Fully transparent inside */
+    foreground: #ffffff;
+}
+
+element.normal.normal {
+    background-color: rgba(0, 0, 0, 0); /* Odd rows transparent */
+}
+
+element.alternate.normal {
+    background-color: rgba(0, 0, 0, 0); /* Even rows transparent */
+}
+
+element.selected {
+    background-color: rgba(255, 255, 255, 0.15); /* Highlight */
+    foreground: #ffffff;
+}
+
+element-text,
+element-icon {
+    background-color: inherit;
+    text-color: inherit;
+}

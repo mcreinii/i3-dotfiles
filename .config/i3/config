@@ -2,6 +2,8 @@
 #       VARIABLES
 ############################
 exec_always --no-startup-id xrdb -merge ~/.Xresources
+
+exec_always --no-startup-id ~/.local/bin/update-rofi-colors
 #
 # Load colors from Xresources
 set_from_resource $foreground  color.foreground  #ffffff
@@ -58,9 +60,9 @@ exec --no-startup-id dunst
 exec_always --no-startup-id picom
 
 ############################
-#       XRDB MERGE
+#       MISC KEYBINDS
 ############################
-bindsym $mod+Shift+m exec --no-startup-id xrdb -merge ~/.Xresources-colors && i3-msg reload && notify-send "Reloaded colors (merged xrdb)"
+bindsym $mod+Shift+m exec --no-startup-id xrdb -merge ~/.Xresources-colors && ~/scripts/update-rofi-colors && i3-msg reload
 
 ############################
 #       AUDIO CONTROLS
@@ -76,7 +78,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 ############################
 bindsym $mod+Return exec kitty
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-bindsym $mod+Shift+d exec --no-startup-id rofi -show drun
+bindsym $mod+Shift+d exec --no-startup-id rofi -show drun -prompt "Launch > "
 bindsym $mod+Shift+q kill
 
 ############################

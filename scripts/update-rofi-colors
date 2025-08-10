@@ -1,0 +1,12 @@
+#!/bin/bash
+mkdir -p ~/.config/rofi
+
+xrdb -query \
+  | grep -E '(\*\.?color[0-9]+|\*\.?foreground|\*\.?background)' \
+  | sed -E 's/^[^ ]*\*\.?color([0-9]+):[[:space:]]*(#[0-9a-fA-F]+)/@define-color color\1 \2;/' \
+  | sed -E 's/^[^ ]*\*\.?foreground:[[:space:]]*(#[0-9a-fA-F]+)/@define-color foreground \1;/' \
+  | sed -E 's/^[^ ]*\*\.?background:[[:space:]]*(#[0-9a-fA-F]+)/@define-color background \1;/' \
+  | LC_ALL=C tr -d '\r' \
+  | sed '/^[[:space:]]*$/d' \
+  > ~/.config/rofi/xresources.rasi
+

@@ -1,0 +1,26 @@
+# ~/.config/dunst/dunstrc
+
+[global]
+    font = FiraMono Mono Nerd Font 10
+    
+    frame_width = 2
+    padding = 8
+    horizontal_padding = 8
+    separator_height = 2
+    transparency = 50
+    corner_radius = 6
+
+[urgency_low]
+    background = "#222222"
+    foreground = "#eeeeee"
+    frame_color = "#888888"
+
+[urgency_normal]
+    background = "#222222"
+    foreground = "#ffffff"
+    frame_color = "#aaaaaa"
+
+[urgency_critical]
+    background = "#550000"
+    foreground = "#ffffff"
+    frame_color = "#ff0000"

@@ -8,22 +8,22 @@ exec_always --no-startup-id ~/.local/bin/update-rofi-colors
 # Load colors from Xresources
 set_from_resource $foreground  color.foreground  #ffffff
 set_from_resource $background  color.background  #000000
-set_from_resource $black        color0           #000000
-set_from_resource $red          color1           #ff0000
-set_from_resource $green        color2           #00ff00
-set_from_resource $yellow       color3           #ffff00
-set_from_resource $blue         color4           #0000ff
-set_from_resource $magenta      color5           #ff00ff
-set_from_resource $cyan         color6           #00ffff
-set_from_resource $white        color7           #c0c0c0
-set_from_resource $bright_black color8           #808080
-set_from_resource $bright_red   color9           #ff0000
-set_from_resource $bright_green color10          #00ff00
-set_from_resource $bright_yellow color11         #ffff00
-set_from_resource $bright_blue  color12          #0000ff
-set_from_resource $bright_magenta color13        #ff00ff
-set_from_resource $bright_cyan  color14          #00ffff
-set_from_resource $bright_white color15          #ffffff
+set_from_resource $color0        color0           #000000
+set_from_resource $color1          color1           #ff0000
+set_from_resource $color2        color2           #00ff00
+set_from_resource $color3       color3           #ffff00
+set_from_resource $color4         color4           #0000ff
+set_from_resource $color5      color5           #ff00ff
+set_from_resource $color6         color6           #00ffff
+set_from_resource $color7        color7           #c0c0c0
+set_from_resource $color8 color8           #808080
+set_from_resource $color9   color9           #ff0000
+set_from_resource $color10 color10          #00ff00
+set_from_resource $color11 color11         #ffff00
+set_from_resource $color12  color12          #0000ff
+set_from_resource $color13 color13        #ff00ff
+set_from_resource $color14  color14          #00ffff
+set_from_resource $color15 color15          #ffffff
 
 set $mod Mod1
 set $left h
@@ -212,7 +212,25 @@ bindsym $mod+r mode "resize"
 #       STATUS BAR
 ############################
 bar {
-    status_command i3status
+    i3bar_command i3bar --transparency
+    status_command i3blocks
+
+    padding 4px 16px 4px 16px
+
+    font pango:FiraMono Mono Nerd Font 10
+    colors {
+        background #00000000
+        statusline $foreground
+        separator $color1
+
+        focused_workspace  #00000000 $background $color12
+        active_workspace   #333333 #5f676a #ffffff
+        inactive_workspace #333333 #222222 #888888
+        urgent_workspace   #2f343a #900000 #ffffff
+        binding_mode       #2f343a #900000 #ffffff
+
+        statusline $color12 $background $color12
+      }
 }
 
 ############################

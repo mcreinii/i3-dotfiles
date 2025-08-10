@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+# i3-wallpaper-dmenu
+# Select a wallpaper from ~/Pictures/Wallpapers using dmenu + feh with previews & tweaks
+
+WALLPAPER_DIR="${HOME}/Pictures/Wallpapers"
+DMENU_CMD="${DMENU:-dmenu -i -l 20 -p Wallpaper}"
+FEH_CMD="${FEH:-feh --bg-scale}"
+NOTIFY_CMD="${NOTIFY:-notify-send}"
+PREVIEW_CMD="${PREVIEW:-sxiv -t}"   # thumbnail mode
+CACHE_FILE="${HOME}/.cache/current_wallpaper"
+
+# Find images
+mapfile -t files < <(find "$WALLPAPER_DIR" -type f \
+  \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' -o -iname '*.bmp' \) \
+  -print | sort)
+
+# No wallpapers found
+if [ ${#files[@]} -eq 0 ]; then
+  $NOTIFY_CMD "Wallpaper" "No images found in $WALLPAPER_DIR"
+  exit 1
+fi
+
+# Prepare menu list: random option + basenames
+menu_list=("🎲 Random")
+for f in "${files[@]}"; do
+  menu_list+=("$(basename "$f")")
+done
+
+# Show menu
+choice=$(printf '%s\n' "${menu_list[@]}" | $DMENU_CMD)
+[ -z "$choice" ] && exit 0  # cancel
+
+# Handle random
+if [[ "$choice" == "🎲 Random" ]]; then
+  choice_file="${files[RANDOM % ${#files[@]}]}"
+else
+  # Find matching full path
+  for f in "${files[@]}"; do
+    if [[ "$(basename "$f")" == "$choice" ]]; then
+      choice_file="$f"
+      break
+    fi
+  done
+fi
+
+# Optional preview before applying
+if command -v sxiv >/dev/null; then
+  sxiv -t "$choice_file"
+fi
+
+# Apply wallpaper
+$FEH_CMD -- "$choice_file"
+
+# Save last wallpaper
+echo "$choice_file" > "$CACHE_FILE"
+
+# Notify
+$NOTIFY_CMD "Wallpaper" "$(basename "$choice_file") set"
+

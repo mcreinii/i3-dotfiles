@@ -58,11 +58,17 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 exec --no-startup-id dunst
 exec_always --no-startup-id picom
+# Restore last wallpaper on startup
+exec_always --no-startup-id bash -c 'test -f ~/.cache/current_wallpaper && feh --bg-scale "$(cat ~/.cache/current_wallpaper)"'
 
 ############################
 #       MISC KEYBINDS
 ############################
+# merge xrdb
 bindsym $mod+Shift+m exec --no-startup-id xrdb -merge ~/.Xresources-colors && ~/scripts/update-rofi-colors && i3-msg reload
+# wallpaper selector
+bindsym $mod+Shift+w exec --no-startup-id ~/scripts/i3-dmenu-wallpaper
+
 
 ############################
 #       AUDIO CONTROLS

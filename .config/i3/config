@@ -1,6 +1,13 @@
 ############################
 #       VARIABLES
 ############################
+exec --no-startup-id xrdb -merge ~/.Xresources-colors
+
+set_from_resource $primary color.primary 
+set_from_resource $secondary color.secondary
+set_from_resource $bg color.bg 
+set_from_resource $fg color.fg
+
 set $mod Mod1
 set $left h
 set $down j
@@ -139,6 +146,14 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?.' -B 'Yes' 'i3-msg 
 ###############################################################################
 # Appearance
 ###############################################################################
+
+set_from_resource $primary color.primary #ff00ff
+set_from_resource $secondary color.secondary #00ffff
+set_from_resource $bg color.bg #1e1e2e
+set_from_resource $fg color.fg #cdd6f4
+
+client.focused          $primary $bg $fg $primary
+client.focused_inactive $secondary $bg $fg $secondary
 
 # Hide title bars for tiling windows, keep them for floating windows
 default_border pixel 4

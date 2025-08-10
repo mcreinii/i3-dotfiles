@@ -1,0 +1,5 @@
+! ~/.Xresources-colors
+*.primary:   #ff0000
+*.secondary: #00ff00
+*.bg:        #0000ff
+*.fg:        #ffffff

@@ -10,17 +10,7 @@
 separator=true
 separator_block_width=15
 
-[documentation]
-full_text=Documentation
-website=https://vivien.github.io/i3blocks
-command=xdg-open "$website"
-color=#f12711
-
-[greetings]
-color=#f5af19
-command=echo "Hello, $USER pogi!"
-interval=once
-
 [time]
-command=date '+%Y-%m-%d %H:%M:%S'
+full_text=Time
+command=date "+%Y-%m-%d %H:%M:%S"
 interval=1

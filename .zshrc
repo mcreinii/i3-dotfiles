@@ -3,6 +3,8 @@ if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
     eval $(dbus-launch --sh-syntax)
 fi
 
+alias scratch=nvim"notes/$(date +"%A-%Y-%m-%d")"
+
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000

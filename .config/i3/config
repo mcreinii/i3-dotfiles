@@ -217,19 +217,19 @@ bar {
 
     padding 4px 16px 4px 16px
 
-    font pango:FiraMono Mono Nerd Font 10
+    position top
+
+    font pango:FiraMono Mono Nerd Font SemiBold 10
     colors {
         background #00000000
-        statusline $foreground
+        statusline $color10
         separator $color1
 
-        focused_workspace  #00000000 $background $color12
+        focused_workspace  #00000000 $color12 $background
         active_workspace   #333333 #5f676a #ffffff
         inactive_workspace #333333 #222222 #888888
         urgent_workspace   #2f343a #900000 #ffffff
         binding_mode       #2f343a #900000 #ffffff
-
-        statusline $color12 $background $color12
       }
 }
 

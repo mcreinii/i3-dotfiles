@@ -68,7 +68,7 @@ exec_always --no-startup-id wal -i "$(cat ~/.cache/current_wallpaper)"
 # merge xrdb
 bindsym $mod+Shift+m exec --no-startup-id xrdb -merge ~/.Xresources-colors && ~/scripts/update-rofi-colors && i3-msg reload
 # wallpaper selector
-bindsym $mod+Shift+w exec --no-startup-id ~/scripts/i3-dmenu-wallpaper
+bindsym $mod+Shift+w exec --no-startup-id ~/scripts/rofi-wallpaper
 
 
 ############################

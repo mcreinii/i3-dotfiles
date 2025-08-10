@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+# i3-wallpaper-rofi
+# Select a wallpaper from ~/Pictures/Wallpapers using rofi + feh + pywal
+
+WALLPAPER_DIR="${HOME}/Pictures/Wallpapers"
+CACHE_FILE="${HOME}/.cache/current_wallpaper"
+
+FEH_CMD="${FEH:-feh --bg-scale}"
+NOTIFY_CMD="${NOTIFY:-notify-send}"
+
+# Find wallpapers
+mapfile -t files < <(find "$WALLPAPER_DIR" -type f \
+  \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' -o -iname '*.bmp' \) \
+  -print | sort)
+
+# Exit if no wallpapers found
+if [ ${#files[@]} -eq 0 ]; then
+  $NOTIFY_CMD "Wallpaper" "No images found in $WALLPAPER_DIR"
+  exit 1
+fi
+
+# Menu list
+menu_list=("🎲 Random")
+for f in "${files[@]}"; do
+  menu_list+=("$(basename "$f")")
+done
+
+# Rofi prompt
+choice=$(printf '%s\n' "${menu_list[@]}" | rofi \
+  -dmenu \
+  -i \
+  -p "🎨 Wallpaper" \
+  -theme "~/.cache/wal/colors-rofi-dark.rasi")
+
+[ -z "$choice" ] && exit 0
+
+# Pick file
+if [[ "$choice" == "🎲 Random" ]]; then
+  choice_file="${files[RANDOM % ${#files[@]}]}"
+else
+  for f in "${files[@]}"; do
+    if [[ "$(basename "$f")" == "$choice" ]]; then
+      choice_file="$f"
+      break
+    fi
+  done
+fi
+
+# Preview if sxiv exists
+# if command -v sxiv >/dev/null; then
+#   sxiv -t "$choice_file"
+# fi
+
+# Apply wallpaper
+$FEH_CMD -- "$choice_file"
+wal -i "$choice_file"
+
+# Save cache
+echo "$choice_file" >"$CACHE_FILE"
+
+# Notify
+$NOTIFY_CMD "Wallpaper" "$(basename "$choice_file") set"

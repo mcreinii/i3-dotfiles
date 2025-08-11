@@ -11,10 +11,9 @@ dl-music() {
     return 1
   fi
 
-  setopt NO_NOMATCH  # temporarily disable no match error in zsh
   mkdir -p ~/Music
   yt-dlp -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0 -o '~/Music/%(title)s.%(ext)s' "$1"
-  setopt NOMATCH     # re-enable no match error
+  notify-send "%(title)s downloaded"
 }
 
 HISTFILE=~/.histfile

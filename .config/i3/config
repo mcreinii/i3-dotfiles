@@ -85,6 +85,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 ############################
 bindsym $mod+Return exec kitty
 bindsym $mod+d exec --no-startup-id rofi -modi drun -show drun -display-drun "  Launch"
+bindsym Print exec --no-startup-id flameshot gui
+bindsym $mod+v exec --no-startup-id audacious
 bindsym $mod+Shift+q kill
 
 ############################
@@ -238,3 +240,4 @@ bar {
 ############################
 assign [class="firefox"] $ws1  
 assign [class="kitty"] $ws2
+assign [class="Audacious"] $ws10

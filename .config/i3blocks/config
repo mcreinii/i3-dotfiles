@@ -11,6 +11,5 @@ separator=true
 separator_block_width=15
 
 [time]
-full_text=Time
-command=date "+%Y-%m-%d %H:%M:%S"
+command=date +"%I:%M %p  "
 interval=1

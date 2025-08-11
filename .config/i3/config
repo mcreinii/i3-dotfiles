@@ -179,7 +179,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?.' -B 'Yes' 'i3-msg 
 # Appearance
 ###############################################################################
 
-client.focused          $color2  $color2    $color15 $color2   $color2
+client.focused          $color1  $color1    $color15 $color1   $color1
 client.focused_inactive $color0  $color0    $color7  $color0   $color0
 client.unfocused        $color0  $color0    $color7  $color0   $color0
 client.urgent           $color1  $color1    $color15 $color1   $color1
@@ -226,10 +226,10 @@ bar {
         statusline $color15
         separator  $color8
 
-        focused_workspace  $color2  $color2  $color15
+        focused_workspace  $color1  $color1  $color15
         active_workspace   $color0  $color0  $color15
         inactive_workspace $color0  $color0  $color7
-        urgent_workspace   $color1  $color1  $color15
+        urgent_workspace   $color2  $color2  $color15
         binding_mode       $color3  $color3  $color0
       }
 }

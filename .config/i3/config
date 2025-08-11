@@ -46,7 +46,7 @@ set $ws10 "Music  "
 ############################
 #       GENERAL SETTINGS
 ############################
-font pango:FiraMono Nerd Font Mono 10
+font pango:JetBrainsMono Nerd Font:style=Medium 11
 floating_modifier $mod
 tiling_drag modifier titlebar
 
@@ -216,22 +216,21 @@ bar {
     i3bar_command i3bar --transparency
     status_command i3blocks
 
-    padding 2px 8px 2px 8px
-
     position top
 
-    font pango:FiraMono Mono Nerd Font SemiBold 10
+    font pango:JetBrainsMono Nerd Font:style=SemiBold 11
+
     colors {
         background #00000000
         statusline $color15
         separator  $color8
 
-        focused_workspace  $color1  $color1  $color15
-        active_workspace   $color0  $color0  $color15
-        inactive_workspace $color0  $color0  $color7
-        urgent_workspace   $color2  $color2  $color15
-        binding_mode       $color3  $color3  $color0
-      }
+        focused_workspace   $color2   $color2   $color15  
+        active_workspace    $color8   $color8   $color15  
+        inactive_workspace  $color0   $color0   $color7   
+        urgent_workspace    $color1   $color1   $color15  
+        binding_mode        $color3   $color3   $color0   
+    }
 }
 
 ############################

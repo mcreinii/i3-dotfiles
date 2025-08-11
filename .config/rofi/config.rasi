@@ -1,8 +1,6 @@
 /* Base theme using pywal-16 colors */
 @import "~/.cache/wal/colors-rofi-dark.rasi"
 
-configuration {
-    font: "FiraMono Nerd Font Mono 12";
     show-icons: true;
 }
 

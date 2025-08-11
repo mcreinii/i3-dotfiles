@@ -1,7 +1,7 @@
 # ~/.config/dunst/dunstrc
 
 [global]
-    font = FiraMono Mono Nerd Font 10
+    font = JetBrainsMono Nerd Font:style=SemiBold 11
     
     frame_width = 2
     padding = 8

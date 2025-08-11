@@ -57,6 +57,7 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 exec --no-startup-id dunst
+exec --no-startup-id audacious ~/Music/
 exec_always --no-startup-id picom
 # Restore last wallpaper on startup
 exec_always --no-startup-id bash -c 'test -f ~/.cache/current_wallpaper && feh --bg-scale "$(cat ~/.cache/current_wallpaper)"'
@@ -132,7 +133,7 @@ bindsym $mod+a focus parent
 #        WINDOW GAPS
 ############################
 # Inner gaps: space between windows
-gaps inner 0
+gaps inner 4
 
 # Optional: change gaps on the fly with keybinds
 bindsym $mod+Shift+comma gaps inner current plus 4
@@ -188,8 +189,8 @@ client.urgent           $color1  $color1    $color15 $color1   $color1
 client.placeholder      $color0  $color0    $color15 $color0   $color0
 
 # Hide title bars for tiling windows, keep them for floating windows
-default_border pixel 4
-default_floating_border normal 4
+default_border pixel 2
+default_floating_border normal 2
 
 ############################
 #       RESIZE MODE

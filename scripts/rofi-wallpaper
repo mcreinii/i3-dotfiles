@@ -54,6 +54,7 @@ fi
 # Apply wallpaper
 $FEH_CMD -- "$choice_file"
 wal -i "$choice_file"
+pywalfox update
 
 # Save cache
 echo "$choice_file" >"$CACHE_FILE"

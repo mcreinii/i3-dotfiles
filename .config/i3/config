@@ -187,7 +187,7 @@ client.placeholder      $color0  $color0    $color15 $color0   $color0
 
 # Hide title bars for tiling windows, keep them for floating windows
 default_border pixel 4
-default_floating_border normal
+default_floating_border normal 4
 
 ############################
 #       RESIZE MODE

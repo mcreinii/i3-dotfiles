@@ -1,6 +1,8 @@
 /* Base theme using pywal-16 colors */
 @import "~/.cache/wal/colors-rofi-dark.rasi"
 
+configuration {
+    font: "JetBrainsMono Nerd Font:style=Medium 12";
     show-icons: true;
 }
 

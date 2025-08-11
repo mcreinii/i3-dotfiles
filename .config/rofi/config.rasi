@@ -2,7 +2,7 @@
 @import "~/.cache/wal/colors-rofi-dark.rasi"
 
 configuration {
-    font: "JetBrainsMono Nerd Font:style=Medium 12";
+    font: "JetBrainsMono Nerd Font Mono Medium 11";
     show-icons: true;
 }
 

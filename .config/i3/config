@@ -46,7 +46,7 @@ set $ws10 "Music  "
 ############################
 #       GENERAL SETTINGS
 ############################
-font pango:JetBrainsMono Nerd Font:style=Medium 11
+font pango:JetBrainsMono Nerd Font Mono Medium 11
 floating_modifier $mod
 tiling_drag modifier titlebar
 
@@ -220,7 +220,7 @@ bar {
 
     position top
 
-    font pango:JetBrainsMono Nerd Font:style=SemiBold 11
+    font pango:JetBrainsMono Nerd Font Mono Medium 11
 
     colors {
         background #00000000

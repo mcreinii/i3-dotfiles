@@ -5,6 +5,18 @@ fi
 
 alias scratch=nvim"notes/$(date +"%A-%Y-%m-%d").mb"
 
+dl-music() {
+  if [ -z "$1" ]; then
+    echo "Usage: dl-music <url>"
+    return 1
+  fi
+
+  setopt NO_NOMATCH  # temporarily disable no match error in zsh
+  mkdir -p ~/Music
+  yt-dlp -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0 -o '~/Music/%(title)s.%(ext)s' "$1"
+  setopt NOMATCH     # re-enable no match error
+}
+
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000

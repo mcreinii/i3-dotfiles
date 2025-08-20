@@ -3,7 +3,7 @@ if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
     eval $(dbus-launch --sh-syntax)
 fi
 
-alias scratch=nvim"notes/$(date +"%A-%Y-%m-%d").mb"
+alias scratch="nvim notes/$(date +"%A-%Y-%m-%d").md"
 
 dl-music() {
   if [ -z "$1" ]; then

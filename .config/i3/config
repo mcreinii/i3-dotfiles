@@ -89,6 +89,7 @@ bindsym $mod+d exec --no-startup-id rofi -modi drun -show drun -display-drun "ï„
 bindsym Print exec --no-startup-id flameshot gui
 bindsym $mod+v exec --no-startup-id audacious
 bindsym $mod+Shift+q kill
+bindsym $mod+Shift+p exec --no-startup-id flameshot screen -c
 
 ############################
 #       NAVIGATION (Vim Style)

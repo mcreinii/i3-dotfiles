@@ -29,3 +29,5 @@ compinit
 # End of lines added by compinstall
 
 eval "$(starship init zsh)"
+export PATH="/home/reini/.config/herd-lite/bin:$PATH"
+export PHP_INI_SCAN_DIR="/home/reini/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"

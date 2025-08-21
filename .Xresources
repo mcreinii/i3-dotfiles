@@ -1,0 +1,11 @@
+XTerm*faceName: FiraMono Nerd Font Mono
+XTerm*faceSize: 12
+XTerm*faceNameDoublesize: Monospace
+XTerm*utf8: 2
+XTerm*renderFont: true
+
+UXTerm*faceName: FiraMono Nerd Font Mono
+UXTerm*faceSize: 12
+UXTerm*faceNameDoublesize: Monospace
+UXTerm*utf8: 2
+UXTerm*renderFont: true

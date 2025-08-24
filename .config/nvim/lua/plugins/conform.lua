@@ -11,6 +11,7 @@ return {
       css = { "prettierd" },
       yaml = { "prettierd" },
       markdown = { "prettierd" },
+      vue = { "prettierd" },
       -- Add more as needed
     },
     -- Optional: enable format on save

@@ -16,6 +16,9 @@ dl-music() {
   notify-send "%(title)s downloaded"
 }
 
+alias lazyvim="NVIM_APPNAME=lazyvim nvim"
+alias nvchad="NVIM_APPNAME=nvchad nvim"
+
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
